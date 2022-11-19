@@ -9,38 +9,28 @@ import java.util.List;
 
 @EqualsAndHashCode
 @Entity
+@Setter
+@Getter
 @Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"path", "site_id"})})
 public class Page {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Setter
-    @Getter
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Setter
-    @Getter
     @Column(nullable = false, length = 200)
     private String path;
 
-    @Setter
-    @Getter
     @Column(nullable = false)
     private int code;
 
-    @Setter
-    @Getter
     @Column(nullable = false, columnDefinition = "mediumtext")
     private String content;
 
-    @Setter
-    @Getter
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "site_id", nullable = false)
     private Site site;
 
-    @Getter
-    @Setter
     @ManyToMany(cascade = CascadeType.REMOVE)
     @JoinTable(name = "Indexes",
             joinColumns = {@JoinColumn(name = "page_id")},
@@ -55,6 +45,6 @@ public class Page {
         this.site = site;
     }
 
-    protected Page() {
+    public Page() {
     }
 }

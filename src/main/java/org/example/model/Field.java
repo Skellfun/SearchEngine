@@ -8,30 +8,24 @@ import javax.persistence.*;
 
 @EqualsAndHashCode
 @Entity
+@Getter
+@Setter
 public class Field {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Setter
-    @Getter
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Setter
-    @Getter
     @Column(nullable = false)
     private String name;
 
-    @Setter
-    @Getter
     @Column(nullable = false)
     private String selector;
 
-    @Setter
-    @Getter
     @Column(nullable = false)
     private float weight;
 
-    protected Field() {
+    public Field() {
     }
 
     public Field(String name, String selector, float weight) {

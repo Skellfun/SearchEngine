@@ -1,6 +1,8 @@
 spring:
+  flyway:
+    enabled: true
   datasource:
-    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/searchengine
+    url: jdbc:mysql://mysql_db:3306/searchengine?createDatabaseIfNotExist=true
     username: root
     password: AdgjMptw123
     hikari:
@@ -8,7 +10,8 @@ spring:
       connection-timeout: 600000
       max-lifetime: 1800000
   jpa:
-    hibernate.ddl-auto: create
+    generate-ddl: false
+    hibernate.ddl-auto: validate
     show-sql: false
     properties:
       hibernate:

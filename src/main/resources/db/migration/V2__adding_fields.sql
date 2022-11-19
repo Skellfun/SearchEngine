@@ -1,0 +1,1 @@
+INSERT INTO field (name, selector, weight) values ('title', 'title', 1.0), ('body', 'body', 0.8);

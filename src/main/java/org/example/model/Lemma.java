@@ -2,37 +2,33 @@ package org.example.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
+@Setter
+@Getter
+@ToString
 @Table(name = "lemma", indexes = @Index(name = "l_index", columnList = "lemma"))
 public class Lemma {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Setter
-    @Getter
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Setter
-    @Getter
     @Column(nullable = false, length = 50, unique = true)
     private String lemma;
 
-    @Setter
-    @Getter
     @Column(nullable = false)
     private int frequency;
 
-    @Getter
-    @Setter
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "lemmas")
     private List<Page> pages;
 
-    protected Lemma() {
+    public Lemma() {
     }
 
     public Lemma(String lemma, int frequency) {

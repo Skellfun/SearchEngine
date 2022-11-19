@@ -64,7 +64,6 @@ public class GetLinksAction extends RecursiveAction {
     }
 
     public Page createPage(String path, Site site, String userAgent) throws Exception {
-
         String url = site.getUrl() + path;
         Connection connection = Jsoup.connect(url).userAgent(userAgent)
                 .referrer("http://www.google.com")
@@ -76,7 +75,6 @@ public class GetLinksAction extends RecursiveAction {
         synchronized (site) {
             if (isNewLink(path, site)) {
                 pageRepository.saveAndFlush(page);
-                System.out.println("Link: " + path + " added. " + Thread.currentThread().getName());
             } else {
                 return null;
             }
