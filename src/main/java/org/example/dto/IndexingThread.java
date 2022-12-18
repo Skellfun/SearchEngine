@@ -4,6 +4,7 @@ import lombok.Getter;
 import org.example.model.Site;
 
 import java.util.concurrent.ForkJoinPool;
+import java.util.concurrent.TimeUnit;
 
 public class IndexingThread {
     @Getter
@@ -18,7 +19,13 @@ public class IndexingThread {
     }
 
     public void stop() {
-        forkJoinPool.shutdown();
+        forkJoinPool.shutdownNow();
+
+        try {
+            forkJoinPool.awaitTermination(60, TimeUnit.SECONDS);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         thread.interrupt();
     }
 }

@@ -17,7 +17,7 @@ public class Site {
     @OneToMany(mappedBy = "site", cascade = CascadeType.REMOVE)
     List<Page> pages;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Setter
     @Getter
     private long id;

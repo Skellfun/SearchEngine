@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class Indx {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Setter
     @Getter
     private long id;

@@ -12,7 +12,7 @@ import java.util.Objects;
 public class Lemma {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Setter
     @Getter
     private int id;
