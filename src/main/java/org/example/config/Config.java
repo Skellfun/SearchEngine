@@ -31,6 +31,4 @@ public class Config {
         @Getter
         private String name;
     }
-
-
 }
